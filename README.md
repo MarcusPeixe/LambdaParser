@@ -1,8 +1,4 @@
-<style>
-  body {
-    text-align: justify;
-  }
-</style>
+<style> body { text-align: justify; } </style>
 
 # Lambda Calculus interpreter
 
