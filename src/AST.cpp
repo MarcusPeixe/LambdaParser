@@ -335,7 +335,7 @@ AST::Node *AST::Abstraction::eta_reduce() {
   if (term->get_type() == Type::Application
     and ((Application *) term)->term2->get_type() == Type::Variable
     and ((Variable *) ((Application *) term)->term2)->bruijn_index == 1
-    and !((Application *) term)->term1->free_variables().contains(1)) {
+    and ((Application *) term)->term1->free_variables().count(1) == 0) {
 
     Node *copy = ((Application *) term)->term1->copy();
 
