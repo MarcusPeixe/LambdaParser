@@ -56,9 +56,9 @@ size_t Parser::position;
 void Parser::skip_space() {
   char next_char = seek();
   while (next_char == ' '
-    || next_char == '\t'
-    || next_char == '\n'
-    || next_char == '\r') {
+    or next_char == '\t'
+    or next_char == '\n'
+    or next_char == '\r') {
     next();
     next_char = seek();
   }
@@ -66,14 +66,14 @@ void Parser::skip_space() {
 
 static bool is_alpha(char c) {
   if (c == EOF) return false;
-  return c >= 'a' && c <= 'z'
-    || c >= 'A' && c <= 'Z'
-    || c >= '0' && c <= '9'
-    || c == '_';
+  return (c >= 'a' and c <= 'z')
+    or (c >= 'A' and c <= 'Z')
+    or (c >= '0' and c <= '9')
+    or c == '_';
 }
 
 static bool is_digit(char c) {
-  return c >= '0' && c <= '9';
+  return c >= '0' and c <= '9';
 }
 
 std::string Parser::parse_name_token() {

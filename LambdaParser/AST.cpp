@@ -49,7 +49,7 @@ AST::Variable::~Variable() {
 }
 
 const std::string AST::Variable::to_string() {
-  if (bruijn_index && bind_count - bruijn_index >= 0) {
+  if (bruijn_index and bind_count - bruijn_index >= 0) {
     std::string binding_name = bindings.at(bind_count - bruijn_index)->name;
     return C_VAR + binding_name + C_RES;
   }
@@ -67,7 +67,7 @@ AST::Node *AST::Variable::copy() {
 }
 
 void AST::Variable::offset_indexes(int offset, int current) {
-  if (offset < 0 && bruijn_index + offset - current == 0)
+  if (offset < 0 and bruijn_index + offset - current == 0)
     throw RuntimeException("Unreplaced variable had its bind deleted", position, length);
   if (bruijn_index > current)
     bruijn_index += offset;
@@ -333,9 +333,9 @@ AST::Node *AST::Abstraction::eta_reduce() {
   //}
 
   if (term->get_type() == Type::Application
-    && ((Application *) term)->term2->get_type() == Type::Variable
-    && ((Variable *) ((Application *) term)->term2)->bruijn_index == 1
-    && !((Application *) term)->term1->free_variables().contains(1)) {
+    and ((Application *) term)->term2->get_type() == Type::Variable
+    and ((Variable *) ((Application *) term)->term2)->bruijn_index == 1
+    and !((Application *) term)->term1->free_variables().contains(1)) {
 
     Node *copy = ((Application *) term)->term1->copy();
 
@@ -566,7 +566,7 @@ std::string AST::solve(Node *node, std::string expression) {
     std::string assignment_name = assignment->name;
     delete assignment;
     if (term->get_type() == Node::Type::Constant
-      && ((Constant *) term)->name == assignment_name) {
+      and ((Constant *) term)->name == assignment_name) {
       remove_constant(assignment_name);
       return C_ERR "Deleted constant " C_CON + assignment_name + C_RES;
     }
