@@ -1,5 +1,3 @@
-<style> body { text-align: justify; } </style>
-
 # Lambda Calculus interpreter
 
 This project implements a very simple and rudimentary interpreter for
