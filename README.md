@@ -87,6 +87,12 @@ Notice that this last example was identical to the previous one, just with
 some terms defined as constants. In Lambda Calculus, you can implement some
 data types, such as booleans and their logic operations.
 
+Here what we've done is define `true` as a function that takes two arguments
+and returns the first one, and `false` as a function that also takes two
+arguments but returns the second one. `not` can then be defined as a function
+that takes a boolean `x` and evaluates `x false true`. You can hopefully see
+why that works, and how one could go on implementing the other logic gates.
+
 To undefine a constant, you can assign it to itself
 
 ```
