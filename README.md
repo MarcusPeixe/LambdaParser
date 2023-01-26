@@ -16,14 +16,15 @@ The syntax is:
 And the rules are:
 
 * $(\lambda a.\ a\ b) \rightarrow (\lambda x.\ x\ b)$ $\alpha$-conversion
-(basic renaming of variables in an abstraction).
+(basic renaming of variables in a function).
 * $(\lambda a.\ a\ b\ c)\ (d\ e) \rightarrow (d\ e)\ b\ c$ - $\beta$-reduction
 (applying a function to an argument expression).
 
-You can think of abstractions as some sort of macro definitions, and their
-$\beta$-reductions as macro expansions. The $\alpha$-conversions are sometimes
-necessary to avoid naming collisions. After applying all reductions, you
-will get the beta-normal (irreducible) form of the expression.
+You can think of abstractions (also called functions) as some sort of macro
+definitions, and their $\beta$-reductions as macro expansions. The
+$\alpha$-conversions are sometimes necessary to avoid naming collisions.
+After applying all reductions, you will get the beta-normal (irreducible)
+form of the expression.
 
 Lambda Calculus is turing-complete. Read more at the Wikipedia article linked
 above.
@@ -48,6 +49,24 @@ You can type a lambda expression (replace $\lambda$'s with backslashes `\` ).
 = \a.\b.a
 ```
 
+Please note:
+* The abstraction parser is greedy, so everything after a dot will be part of
+  the function (you can use parentheses to enclose the function and tell it
+  where to stop).
+* If you chain abstractions (like in `\a.\b.a`), you can use rewrite it as
+  `\a b.a` as a form of syntactic sugar.
+* Function applications are done by just writing a function with its arguments
+  in front of it. Parentheses are only needed if you want to change the order
+  of application. E.g.: `func1 arg1 arg2 (func2 arg3)`
+
+So the previous expression is equivalent to:
+
+```
+> (\x.x (\a b.b) (\a b.a)) \a b.b
+...
+= \a.\b.a
+```
+
 You can define constants
 
 ```
@@ -63,6 +82,10 @@ and use them later.
 ...
 = true
 ```
+
+Notice that this last example was identical to the previous one, just with
+some terms defined as constants. In Lambda Calculus, you can implement some
+data types, such as booleans and their logic operations.
 
 To undefine a constant, you can assign it to itself
 
