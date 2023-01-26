@@ -82,7 +82,7 @@ where you want to clone the repository to, and type:
 
 ```bash
 git clone https://github.com/MarcusPeixe/LambdaParser.git
-cd LambdaParser/src
+cd LambdaParser
 make
 ```
 
