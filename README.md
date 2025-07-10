@@ -21,9 +21,9 @@ And the rules are:
 (applying a function to an argument expression).
 
 You can think of abstractions (also called functions) as some sort of macro
-definitions, and their $\beta$-reductions as macro expansions. The
-$\alpha$-conversions are sometimes necessary to avoid naming collisions.
-After applying all reductions, you will get the beta-normal (irreducible)
+definitions, and their $\beta$-reductions as macro expansions.
+$\alpha$-conversions are necessary to prevent naming collisions.
+After applying all reductions, you will get the $\beta$-normal (irreducible)
 form of the expression.
 
 Lambda Calculus is turing-complete. Read more at the Wikipedia article linked
@@ -32,7 +32,7 @@ above.
 ## How to use
 
 With this interpreter, you can evaluate lambda expressions, define constants
-and assign expressions to them, and delete these constants.
+with expressions assigned to them, or delete these constants.
 
 When you run the program, it will prompt you for an expression.
 
@@ -51,11 +51,11 @@ You can type a lambda expression (replace $\lambda$'s with backslashes `\` ).
 
 Please note:
 * The abstraction parser is greedy, so everything after a dot will be part of
-  the function (you can use parentheses to enclose the function and tell it
+  the function (you can use parentheses to enclose the function, telling it
   where to stop).
-* If you chain abstractions (like in `\a.\b.a`), you can use rewrite it as
-  `\a b.a` as a form of syntactic sugar.
-* Function applications are done by just writing a function with its arguments
+* If you want to chain abstractions (like in `\a.\b.a`), you can write it as
+  `\a b.a` as a form of syntax sugar.
+* Function applications are performed by just writing a function with its arguments
   in front of it. Parentheses are only needed if you want to change the order
   of application. E.g.: `func1 arg1 arg2 (func2 arg3)`
 
@@ -84,8 +84,8 @@ and use them later.
 ```
 
 Notice that this last example was identical to the previous one, just with
-some terms defined as constants. In Lambda Calculus, you can implement some
-data types, such as booleans and their logic operations.
+some terms defined as constants. In Lambda Calculus, you can implement certain
+data types, such as booleans, and their logic operations.
 
 Here what we've done is define `true` as a function that takes two arguments
 and returns the first one, and `false` as a function that also takes two
